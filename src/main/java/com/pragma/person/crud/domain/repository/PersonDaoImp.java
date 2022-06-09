@@ -63,4 +63,9 @@ public class PersonDaoImp implements PersonDao {
 		return personRepository.findByOldestAges(age);
 	}
 
+	@Override
+	public PersonEntity getPersonByDocumentNumber(int documentNumber) {
+		return personRepository.findByDocumentNumber(documentNumber);
+	}
+
 }

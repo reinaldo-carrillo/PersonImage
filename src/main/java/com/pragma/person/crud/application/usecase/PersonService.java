@@ -10,6 +10,7 @@ public interface PersonService {
 	boolean addPerson(PersonEntity personEntity);
 	Optional<PersonEntity> readPersonById(Long idPerson);
 	Optional<PersonEntity> readfPersonByTypeAndDocumentNumber(String docType, int documentNumber);
+	PersonEntity readfPersonByDocumentNumber(int documentNumber);
 	boolean updatePerson (PersonEntity personEntity);
 	boolean erasePersonById (Long idPerson);
 	boolean erasePersonByDocumentNumber (int documentNumber);

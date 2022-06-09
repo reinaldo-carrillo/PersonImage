@@ -36,38 +36,49 @@ public class PersonServiceImp implements PersonService {
 
 	@Override
 	public boolean updatePerson(PersonEntity personEntity) {
-		// TODO Auto-generated method stub
+		if(personDao.getPersonById(personEntity.getId())!= null) {
+			personDao.addPersonToEntity(personEntity);
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean erasePersonById(Long idPerson) {
-		// TODO Auto-generated method stub
+		if(personDao.getPersonById(idPerson)!= null) {
+			personDao.deletePersonById(idPerson);
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean erasePersonByDocumentNumber(int documentNumber) {
-		// TODO Auto-generated method stub
+		if(personDao.getPersonByDocumentNumber(documentNumber)!= null) {
+			personDao.deletePersonByDocument(documentNumber);
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public List<PersonEntity> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return personDao.getAllPeople();
 	}
 
 	@Override
 	public List<PersonEntity> lookForByAgeRange(int ageBottom, int ageTop) {
-		// TODO Auto-generated method stub
-		return null;
+		return personDao.searchByAgeRange(ageBottom, ageTop);
 	}
 
 	@Override
 	public List<PersonEntity> lookForByOldestAge(int age) {
-		// TODO Auto-generated method stub
-		return null;
+		return personDao.searchByOldestAge(age);
+	}
+
+	@Override
+	public PersonEntity readfPersonByDocumentNumber(int documentNumber) {
+		return personDao.getPersonByDocumentNumber(documentNumber);
 	}
 
 }

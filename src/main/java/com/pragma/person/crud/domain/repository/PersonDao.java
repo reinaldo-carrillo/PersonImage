@@ -9,6 +9,7 @@ public interface PersonDao {
 
 	Optional<PersonEntity> getPersonById (Long id);
 	Optional<PersonEntity> getPersonByTypeAndDocumentNumber (String docType, int documentNumber);
+	PersonEntity getPersonByDocumentNumber (int documentNumber);
 	void addPersonToEntity (PersonEntity personEntity);
 	void updatePersonFromEntity (Long id, PersonEntity personEntity);
 	void deletePersonByDocument (int documentNumber);
