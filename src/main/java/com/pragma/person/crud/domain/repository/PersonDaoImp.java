@@ -1,10 +1,7 @@
 package com.pragma.person.crud.domain.repository;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,11 +9,11 @@ import org.springframework.stereotype.Repository;
 import com.pragma.person.crud.domain.model.PersonEntity;
 
 @Repository
-public class PersonDaoImp implements PersonDao{
+public class PersonDaoImp implements PersonDao {
 
 	@Autowired
 	PersonRepository personRepository;
-	
+
 	@Override
 	public Optional<PersonEntity> getPersonById(Long id) {
 		return personRepository.findById(id);
@@ -24,33 +21,31 @@ public class PersonDaoImp implements PersonDao{
 
 	@Override
 	public Optional<PersonEntity> getPersonByTypeAndDocumentNumber(String docType, int documentNumber) {
-		return Optional.of(Optional.of(personRepository.findByTypeAndDocumentNumber(docType, documentNumber)).orElse(null));
+		return Optional
+				.of(Optional.of(personRepository.findByTypeAndDocumentNumber(docType, documentNumber)).orElse(null));
 	}
 
 	@Override
 	public void addPersonToEntity(PersonEntity personEntity) {
 		personRepository.save(personEntity);
-		
+
 	}
 
 	@Override
-	public void updatePersonFromEntity(Long id, PersonEntity personEntity1) {
-		PersonEntity personFounded = personRepository.findById(id).orElseThrow(
-				()-> new NoSuchElementException("Person wasn't found")
-				);
-		//personFounded.setFirstName(personEntity1.getFirstName());
+	public void updatePersonFromEntity(Long id, PersonEntity personEntity) {
+		personRepository.save(personEntity);
 	}
 
 	@Override
 	public void deletePersonByDocument(int documentNumber) {
 		personRepository.deletePersonByDocumentNumber(documentNumber);
-		
+
 	}
 
 	@Override
 	public void deletePersonById(Long id) {
 		personRepository.deleteById(id);
-		
+
 	}
 
 	@Override
